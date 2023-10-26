@@ -10,6 +10,7 @@
 
 <body>
   <div id="main" class="flex-container">
+    <p id="history"> </p>
     <p id="res">0</p>
     <div class="row">
       <button>%</button>
@@ -18,9 +19,9 @@
       <button onclick="Del()">&#8656;</button>
     </div>
     <div class="row">
-      <button>1/x</button>
-      <button>X<sup>2</sup></button>
-      <button>&#8730;x</button>
+      <button onclick="Obratnoe()">1/x</button>
+      <button onclick="Kvadrat()">X<sup>2</sup></button>
+      <button onclick="Koren()">&#8730;x</button>
       <button>&#247;</button>
     </div>
     <div class="row">
@@ -39,25 +40,41 @@
       <button onclick="numbers(this)">1</button>
       <button onclick="numbers(this)">2</button>
       <button onclick="numbers(this)">3</button>
-      <button>+</button>
+      <button onclick="test()">+</button>
     </div>
     <div class="row">
-      <button>&#177;</button>
+      <button onclick="SmenaZnaka()">&#177;</button>
       <button onclick="numbers(this)">0</button>
       <button onclick="zapyataya()">,</button>
-      <button>=</button>
+      <button onclick="Ravno()">=</button>
     </div>
 </body>
 <script>
+  let plus = 0;
   let result = document.getElementById("res")
-
+  let history = document.getElementById("history")
+  function test() {
+    plus = 1;
+    history.innerHTML = result.innerHTML + "+"
+  }
+  function Ravno(){
+    history.innerHTML += result.innerHTML + "="
+    
+  }
   function numbers(num) {
     let str = result.innerHTML
+
+    if (plus == 1) {
+      result.innerHTML=""
+      plus = 0;
+    }
+
     if (str.indexOf("0") == 0 && str.indexOf(",") !== 1) {
       let newStr = str.slice(1, str.length)
       result.innerHTML = newStr
     }
     result.innerHTML += num.innerHTML
+
   }
   function zapyataya() {
     let str = result.innerHTML
@@ -67,6 +84,7 @@
   }
   function Clear() {
     result.innerHTML = "0"
+    history.innerHTML = " "
   }
   function Del() {
     let str = result.innerHTML
@@ -76,6 +94,24 @@
     } else {
       Clear()
     }
+  }
+  function Obratnoe() {
+    let newRes = 1 / result.innerHTML;
+    result.innerHTML = newRes;
+  }
+  function Kvadrat() {
+    let newRes = result.innerHTML * result.innerHTML;
+    result.innerHTML = newRes;
+  }
+  function Koren() {
+    if (result.innerHTML > 0) {
+      let newRes = Math.sqrt(result.innerHTML);
+      result.innerHTML = newRes;
+    }
+  }
+  function SmenaZnaka() {
+    let newRes = -1 * result.innerHTML;
+    result.innerHTML = newRes;
   }
 </script>
 

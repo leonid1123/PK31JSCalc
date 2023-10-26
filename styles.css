@@ -21,6 +21,13 @@ p{
   margin: 3px;
   font-size:30px;
 }
+#history {
+  text-align: right;
+  margin: 1px;
+  font-size:20px;
+  color: rgb(255, 255, 255);
+  height: 22px;
+}
 .row{
   display: flex;
   flex-direction: row;

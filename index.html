@@ -53,13 +53,19 @@
   let plus = 0;
   let result = document.getElementById("res")
   let history = document.getElementById("history")
+  let fnum;
+  let snum;
+  let deystvie;
   function test() {
     plus = 1;
     history.innerHTML = result.innerHTML + "+"
+    fnum = parseFloat(result.innerHTML)
+    deystvie="+"
   }
   function Ravno(){
     history.innerHTML += result.innerHTML + "="
-    
+    snum = parseFloat(result.innerHTML)
+    result.innerHTML = fnum + snum 
   }
   function numbers(num) {
     let str = result.innerHTML

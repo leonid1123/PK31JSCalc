@@ -59,13 +59,13 @@
   function test() {
     plus = 1;
     history.innerHTML = result.innerHTML + "+"
-    fnum = parseFloat(result.innerHTML)
+    fnum = parseFloat(result.innerHTML.replace(',','.'))
     deystvie="+"
   }
   function Ravno(){
     history.innerHTML += result.innerHTML + "="
-    snum = parseFloat(result.innerHTML)
-    result.innerHTML = fnum + snum 
+    snum = parseFloat(result.innerHTML.replace(',','.'))
+    result.innerHTML = (fnum + snum).toString().replace('.',',') 
   }
   function numbers(num) {
     let str = result.innerHTML
@@ -119,6 +119,15 @@
     let newRes = -1 * result.innerHTML;
     result.innerHTML = newRes;
   }
+class Reshalo {
+  let x;
+  let y;
+  let znak;
+
+  function SetX(_x){
+    x=_x
+  }
+}
 </script>
 
 </html>

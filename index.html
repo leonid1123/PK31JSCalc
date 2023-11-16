@@ -50,29 +50,47 @@
     </div>
 </body>
 <script>
-  let plus = 0;
+  class Reshalo {
+    constructor(_x, _y, _znak) {
+      this.x = _x;
+      this.y = _y;
+      this.znak = _znak;
+    }
+  }
+  let reshalo = new Reshalo(0, 0, 0)
+  reshalo.x = 1;
+  console.log(reshalo.x)
+  let obnulalo=0;
+  let dobavlalo=0;
   let result = document.getElementById("res")
   let history = document.getElementById("history")
-  let fnum;
-  let snum;
-  let deystvie;
+
+
   function test() {
-    plus = 1;
+    obnulalo=1
+    dobavlalo=dobavlalo+1;
     history.innerHTML = result.innerHTML + "+"
-    fnum = parseFloat(result.innerHTML.replace(',','.'))
-    deystvie="+"
+    if (dobavlalo == 1) {
+      reshalo.x = parseFloat(result.innerHTML.replace(',', '.'))
+    } else {
+      reshalo.y = parseFloat(result.innerHTML.replace(',', '.'))
+      result.innerHTML = (reshalo.x + reshalo.y).toString().replace('.', ',')
+      reshalo.x = parseFloat(result.innerHTML.replace(',', '.'))
+    }
   }
-  function Ravno(){
+  function Ravno() {
     history.innerHTML += result.innerHTML + "="
-    snum = parseFloat(result.innerHTML.replace(',','.'))
-    result.innerHTML = (fnum + snum).toString().replace('.',',') 
+    snum = parseFloat(result.innerHTML.replace(',', '.'))
+    //result.innerHTML = (fnum + snum).toString().replace('.', ',')
+    reshalo.y = snum;
+    result.innerHTML = (reshalo.x + reshalo.y).toString().replace('.', ',')
   }
   function numbers(num) {
     let str = result.innerHTML
 
-    if (plus == 1) {
-      result.innerHTML=""
-      plus = 0;
+    if (obnulalo == 1) {
+      result.innerHTML = ""
+      obnulalo = 0;
     }
 
     if (str.indexOf("0") == 0 && str.indexOf(",") !== 1) {
@@ -119,15 +137,8 @@
     let newRes = -1 * result.innerHTML;
     result.innerHTML = newRes;
   }
-class Reshalo {
-  let x;
-  let y;
-  let znak;
 
-  function SetX(_x){
-    x=_x
-  }
-}
+
 </script>
 
 </html>
